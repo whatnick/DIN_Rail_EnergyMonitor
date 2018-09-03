@@ -1,0 +1,21 @@
+[submodule "Arduino_Firmware/ATM90E26_SPI_DIN_Wemos"]
+	path = Arduino_Firmware/ATM90E26_SPI_DIN_Wemos
+	url = https://github.com/whatnick/ATM90E26_SPI_DIN_Wemos
+[submodule "Arduino_Firmware/ATM90E36_SPI_DIN_Wemos"]
+	path = Arduino_Firmware/ATM90E36_SPI_DIN_Wemos
+	url = https://github.com/whatnick/ATM90E36_SPI_DIN_Wemos
+[submodule "KiCAD_PCBs/din_meter_atm90e36"]
+	path = KiCAD_PCBs/din_meter_atm90e36
+	url = https://github.com/whatnick/din_meter_atm90e36
+[submodule "KiCAD_PCBs/din_meter_atm90e26"]
+	path = KiCAD_PCBs/din_meter_atm90e26
+	url = https://github.com/whatnick/din_meter_atm90e26
+[submodule "KiCAD_PCBs/din_power_atm90e26"]
+	path = KiCAD_PCBs/din_power_atm90e26
+	url = https://github.com/whatnick/din_power_atm90e26
+[submodule "KiCAD_PCBs/din_isolated_SPI"]
+	path = KiCAD_PCBs/din_isolated_SPI
+	url = https://github.com/whatnick/din_isolated_SPI
+[submodule "uPy_Firmware/DIN_Wemos_ATM90E26_upy"]
+	path = uPy_Firmware/DIN_Wemos_ATM90E26_upy
+	url = https://github.com/whatnick/DIN_Wemos_ATM90E26_upy
