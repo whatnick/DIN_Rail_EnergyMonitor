@@ -7,7 +7,9 @@ firmware, and open NILM development-platform roadmap.
 
 The delivered Crowd Supply architecture is being recovered as a modular
 development platform for coherent waveform acquisition, FPGA/ASIC metrology,
-local processing, and reproducible non-intrusive load monitoring research.
+local processing, and reproducible non-intrusive load monitoring research. Its
+primary audience is universities, teaching laboratories, small research labs,
+and open-hardware teams rather than the commodity consumer-monitor market.
 
 See the [open NILM platform assessment and staged plan](docs/open-nilm-platform.md).
 

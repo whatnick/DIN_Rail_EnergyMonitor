@@ -18,6 +18,39 @@ quality, FPGA DSP, open datasets, and NILM research. A mains-connected product
 or Sense-like consumer appliance is a later program with separate regulatory,
 installation, enclosure, support, and model-quality gates.
 
+## Primary market and positioning
+
+The primary customers are:
+
+- university power, controls, embedded systems, FPGA, ASIC, and machine
+  learning research groups;
+- smaller independent laboratories that cannot justify proprietary
+  power-quality or high-rate acquisition equipment;
+- teaching laboratories that need inspectable signal paths and reproducible
+  experiments;
+- open-energy, Tiny Tapeout, and advanced maker communities developing new
+  metrology and load-monitoring methods.
+
+Established manufacturers are strongest at certification, installer
+distribution, warranty support, and high-volume production. Competing with
+them on the lowest hardware price would erase the margin needed for
+documentation, calibration, software, datasets, and research support.
+
+The Whatnick differentiation is therefore:
+
+- raw and intermediate data rather than only vendor-defined measurements;
+- open schematics, RTL, firmware, register maps, calibration, and test vectors;
+- modular ADC, metering-IC, FPGA, and ASIC experiments on one platform;
+- publication-ready reference captures and reproducible benchmark pipelines;
+- affordable batches of 5-50 systems for laboratories and teaching cohorts;
+- direct access to design decisions and support from the platform developers.
+
+Price the platform as research equipment with sustainable contribution margin,
+not as a commodity smart-home accessory. Offer a base kit, complete waveform
+and FPGA kit, teaching-lab multipacks, and sponsored early-access hardware.
+Discounts should come from repeatable assembly and cohort orders, not from
+removing calibration, documentation, or support.
+
 ## Recovered platform
 
 The
@@ -120,6 +153,30 @@ CTs / isolated voltage source
 | Consumer product | **Low today** | Requires safety certification, installer channel, enclosure, support, and sustained model accuracy. |
 | Direct-mains open kit | **Low today** | Safety and liability are unacceptable without a formal compliance path. |
 
+## Research production and distribution model
+
+1. Build three engineering systems for electrical, timing, and software
+   validation.
+2. Place 5-10 early-access systems with named design-partner laboratories.
+3. Publish calibration results, reference waveforms, known limitations, and a
+   versioned dataset before opening a broader order.
+4. Manufacture 20-25 unit lab batches only against purchase orders, cohort
+   commitments, or funded research demand.
+5. Offer 10-50 unit teaching-lab bundles after assembly, test, and course
+   material are repeatable.
+6. Keep mains-connected hardware out of the first program by using certified
+   isolated voltage transformers and CTs. This reduces certification scope
+   without weakening metrology, DSP, FPGA, ASIC, or NILM research.
+7. Use Tindie or Crowd Supply for discovery and international fulfilment, but
+   build demand through papers, workshops, university procurement, open
+   datasets, and research collaborations.
+
+Every release should have a citable version, archived design package, machine-
+readable calibration data, benchmark results, and a DOI-backed dataset or
+software snapshot where appropriate. Publications are part of the product
+pipeline: they establish credibility and demand that commodity hardware alone
+cannot create.
+
 ## Stage gates
 
 1. Recover the legacy schematics, pinout, enclosures, BOMs, firmware, and
@@ -156,4 +213,5 @@ The platform work is tracked in this repository and linked to the
 - [#6](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/6) - digital metrology ASIC riser
 - [#7](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/7) - local gateway and open data pipeline
 - [#8](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/8) - research pilot and NILM benchmark
+- [#9](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/9) - university research and publication program
 
