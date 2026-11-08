@@ -148,3 +148,12 @@ CTs / isolated voltage source
 The platform work is tracked in this repository and linked to the
 [Whatnick Store and Product Lifecycle project](https://github.com/users/whatnick/projects/1).
 
+- [#1](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/1) - platform epic
+- [#2](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/2) - legacy recovery and safety boundary
+- [#3](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/3) - vertical-riser interface
+- [#4](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/4) - simultaneous ADC riser
+- [#5](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/5) - FPGA waveform/event riser
+- [#6](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/6) - digital metrology ASIC riser
+- [#7](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/7) - local gateway and open data pipeline
+- [#8](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/8) - research pilot and NILM benchmark
+
