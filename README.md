@@ -1,5 +1,15 @@
-# DIN_Rail_EnergyMonitor
-Aggregation Repository for various DIN Rail Energy Monitor Related PCB Designs and Software
+# DIN Rail Energy Monitor
+
+Aggregation repository for the Whatnick DIN rail energy-monitor hardware,
+firmware, and open NILM development-platform roadmap.
+
+## Open NILM platform
+
+The delivered Crowd Supply architecture is being recovered as a modular
+development platform for coherent waveform acquisition, FPGA/ASIC metrology,
+local processing, and reproducible non-intrusive load monitoring research.
+
+See the [open NILM platform assessment and staged plan](docs/open-nilm-platform.md).
 
 ## Connectors BOM
 
