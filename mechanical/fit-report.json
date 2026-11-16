@@ -1,0 +1,395 @@
+{
+  "revision": "2.0-fit",
+  "sources": {
+    "power": {
+      "pcb_sha256": "89201d53237e93001f9909b3e2e8f3230c2294d3411999226e4019f86cbb517c",
+      "repository_commit": "6f0ef16adf11d8c8b4b1da72f517e23ae0198bc4"
+    },
+    "meter": {
+      "pcb_sha256": "365022ef0c1cc211d5fb3f373655a69ef62bee38141b51d9a181ef5591179fb6",
+      "repository_commit": "9230d0efbb124c0492c8161200cb30ad9d554fdd"
+    },
+    "host": {
+      "pcb_sha256": "306ddaab964cfccc9a5eed14dc177b20322e00cc37d4e9f68bc6a8dd12e7e8e1",
+      "repository_commit": "c0418b235dedf1fa3d9207229d052611eaa04e8f"
+    }
+  },
+  "vendor_sha256": "0a4ee42e9aa243da2288e6669540a4984a8327bc8a96b9c703a94683e251f1c7",
+  "units": "mm; intersections in mm^3",
+  "intersection_threshold_mm3": 0.01,
+  "bounds": {
+    "body": {
+      "min": [
+        4.342082249308987e-13,
+        3.2795988147427124e-13,
+        -8.50000058863322
+      ],
+      "max": [
+        90.20001898544945,
+        36.30001898544443,
+        48.13932583237479
+      ]
+    },
+    "base": {
+      "min": [
+        -2.8464799324889878e-05,
+        -2.8464800264194068e-05,
+        -9.502167579649553
+      ],
+      "max": [
+        90.20004745024825,
+        36.3000474502395,
+        -3.2791547255328624e-12
+      ]
+    },
+    "cover": {
+      "min": [
+        24.100009492718527,
+        2.100009492714889,
+        42.799999999992615
+      ],
+      "max": [
+        66.10000949273308,
+        34.20000949272459,
+        48.19999999999333
+      ]
+    },
+    "clip": {
+      "min": [
+        -5.157133364413768,
+        3.9000094927214093,
+        -9.000000000009173
+      ],
+      "max": [
+        28.342866635593964,
+        32.400009492725104,
+        -3.800000000007285
+      ]
+    },
+    "guard_right": {
+      "min": [
+        75.334195196996,
+        0.2500094927208342,
+        3.5999999999874754
+      ],
+      "max": [
+        90.03419900470544,
+        36.05000949272568,
+        22.999999999993058
+      ]
+    },
+    "guard_left": {
+      "min": [
+        0.1658199807525883,
+        0.2500094927208354,
+        3.599999999986524
+      ],
+      "max": [
+        14.865823788453131,
+        36.05000949272568,
+        22.99999999999306
+      ]
+    },
+    "power": {
+      "min": [
+        -3.778000000012142,
+        1.75,
+        -2.9400000230000947
+      ],
+      "max": [
+        88.55000000000001,
+        34.550000000000004,
+        19.64
+      ]
+    },
+    "meter": {
+      "min": [
+        59.374999999999964,
+        2.15000000000002,
+        7.999999999999986
+      ],
+      "max": [
+        66.17499999999998,
+        34.15000000000005,
+        39.19399995495002
+      ]
+    },
+    "host": {
+      "min": [
+        24.998000000000015,
+        2.2579999999999956,
+        35.994999984982
+      ],
+      "max": [
+        65.51100000000001,
+        34.00800000000001,
+        45.19499998498219
+      ]
+    }
+  },
+  "board_to_enclosure_intersections_mm3": {
+    "power": {
+      "body": 58.470869,
+      "base": 2.018475,
+      "cover": 0.0,
+      "clip": 0.0,
+      "guard_right": 0.0,
+      "guard_left": 25.009778
+    },
+    "meter": {
+      "body": 0.292312,
+      "base": 0.0,
+      "cover": 0.0,
+      "clip": 0.0,
+      "guard_right": 0.0,
+      "guard_left": 0.0
+    },
+    "host": {
+      "body": 28.275238,
+      "base": 0.0,
+      "cover": 0.0,
+      "clip": 0.0,
+      "guard_right": 0.0,
+      "guard_left": 0.0
+    }
+  },
+  "board_to_board_intersections_mm3": {
+    "power:meter": 5.401697,
+    "power:host": 0.0,
+    "meter:host": 51.880182
+  },
+  "display_reservation_to_enclosure_mm3": {
+    "body": 0.0,
+    "base": 0.0,
+    "cover": 0.0,
+    "clip": 0.0,
+    "guard_right": 0.0,
+    "guard_left": 0.0
+  },
+  "rear_insertion_paths": [
+    {
+      "initial_angle_deg": 0,
+      "samples": 52,
+      "samples_checked": 41,
+      "clear_at_samples": false,
+      "collision_count": 1,
+      "first_collision": {
+        "frame": 40,
+        "angle_deg": 0.0,
+        "z_offset_mm": -11.0,
+        "intersection_mm3": 34.373979
+      }
+    },
+    {
+      "initial_angle_deg": 10,
+      "samples": 52,
+      "samples_checked": 31,
+      "clear_at_samples": false,
+      "collision_count": 1,
+      "first_collision": {
+        "frame": 30,
+        "angle_deg": 10.0,
+        "z_offset_mm": -20.0,
+        "intersection_mm3": 29.323727
+      }
+    },
+    {
+      "initial_angle_deg": 20,
+      "samples": 52,
+      "samples_checked": 27,
+      "clear_at_samples": false,
+      "collision_count": 1,
+      "first_collision": {
+        "frame": 26,
+        "angle_deg": 20.0,
+        "z_offset_mm": -28.0,
+        "intersection_mm3": 0.41916
+      }
+    },
+    {
+      "initial_angle_deg": 30,
+      "samples": 62,
+      "samples_checked": 26,
+      "clear_at_samples": false,
+      "collision_count": 1,
+      "first_collision": {
+        "frame": 25,
+        "angle_deg": 30.0,
+        "z_offset_mm": -30.0,
+        "intersection_mm3": 3.488312
+      }
+    }
+  ],
+  "missing_export_models": {
+    "power": [
+      "Could not add 3D model for R27.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R6.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R12.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R5.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R7.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R14.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R13.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R16.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R17.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R22.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R23.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R24.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R15.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl",
+      "Could not add 3D model for R1.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R4.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R2.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R8.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R9.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R10.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R11.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R3.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl"
+    ],
+    "meter": [
+      "Could not add 3D model for M2.",
+      "File not found: ${KISYS3DMOD}/Housings_SSOP.3dshapes/SSOP-28_5.3x10.2mm_Pitch0.65mm.wrl",
+      "Could not add 3D model for C13.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for L2.",
+      "File not found: ${KISYS3DMOD}/Inductors_SMD.3dshapes/L_0402.wrl",
+      "Could not add 3D model for L1.",
+      "File not found: ${KISYS3DMOD}/Inductors_SMD.3dshapes/L_0402.wrl",
+      "Could not add 3D model for C22.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C21.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C24.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C23.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for R8.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R9.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R7.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R10.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for Y1.",
+      "File not found: ${KISYS3DMOD}/Crystals.3dshapes/Crystal_SMD_5032-2pin_5.0x3.2mm.wrl",
+      "Could not add 3D model for Y2.",
+      "File not found: ${KISYS3DMOD}/Crystals.3dshapes/Crystal_SMD_5032-2pin_5.0x3.2mm.wrl",
+      "Could not add 3D model for C17.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C18.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C19.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C20.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for R3.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R4.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R5.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R6.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for C15.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C16.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for R1.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for R2.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0402.wrl",
+      "Could not add 3D model for C9.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C10.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C12.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C14.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C8.",
+      "File not found: Capacitors_SMD.3dshapes/C_0603.wrl",
+      "Could not add 3D model for C11.",
+      "File not found: Capacitors_SMD.3dshapes/C_0603.wrl",
+      "Could not add 3D model for C7.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C6.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C5.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C3.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C2.",
+      "File not found: Capacitors_SMD.3dshapes/C_0402.wrl",
+      "Could not add 3D model for C4.",
+      "File not found: Capacitors_SMD.3dshapes/C_0603.wrl",
+      "Could not add 3D model for C1.",
+      "File not found: Capacitors_SMD.3dshapes/C_0603.wrl",
+      "Could not add 3D model for M1.",
+      "File not found: ${KISYS3DMOD}/Housings_SSOP.3dshapes/SSOP-28_5.3x10.2mm_Pitch0.65mm.wrl"
+    ],
+    "host": [
+      "Could not add 3D model for R12.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for C2.",
+      "File not found: Capacitors_SMD.3dshapes/C_0603.wrl",
+      "Could not add 3D model for C1.",
+      "File not found: Capacitors_SMD.3dshapes/C_0603.wrl",
+      "Could not add 3D model for R6.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R1.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R2.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R3.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R4.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R7.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R9.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R10.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R11.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R5.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for R8.",
+      "File not found: ${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0603.wrl",
+      "Could not add 3D model for U1.",
+      "File not found: ${KISYS3DMOD}/Housings_SOIC.3dshapes/SOIC-16_3.9x9.9mm_Pitch1.27mm.wrl"
+    ]
+  },
+  "empty_wemos_step": true,
+  "release_gate": "BLOCKED: missing host/display/mated-cable models, provisional seating datums, and legacy electrical safety/DRC review",
+  "limitations": [
+    "DMB-4770 inferred from exact manufacturer board-A dimensions; confirm physical enclosure marking.",
+    "Only rigid sampled positions are tested; flexing latches, tolerances and cable bends are not simulated.",
+    "Standard cover geometry represents the clear-cover shape; transparency is illustrative.",
+    "Intersections at mating connectors require per-part review, not automatic dismissal.",
+    "Display is a reserved envelope, not a sourced display model.",
+    "Legacy base still has direct-mains circuits; v2.0-fit is not an approved SELV design.",
+    "Power J1 footprint and supplied Phoenix STEP part identity/alignment disagree; resolve before changing its placement.",
+    "Power prototype has three unconnected CT items and a starved GNDA thermal; not for fabrication."
+  ]
+}

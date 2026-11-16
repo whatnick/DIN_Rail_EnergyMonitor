@@ -1,0 +1,57 @@
+{
+  "revision": "2.0-fit",
+  "units": "mm",
+  "status": "engineering fit study; not a manufacturing release",
+  "enclosure": {
+    "part": "Bud DMB-4770",
+    "cover": "DMB-4770-CC",
+    "product_url": "https://www.budind.com/product/general-use-boxes/din-rail-mount-multi-board-box-series/dmb-4770/",
+    "drawing_url": "https://www.budind.com/wp-content/uploads/2019/01/hb4770.pdf",
+    "step_url": "https://drive.google.com/uc?export=download&id=1Liez5WD5nuC7qBCSqGyIaQMA0VdjXkyV",
+    "step_sha256": "0a4ee42e9aa243da2288e6669540a4984a8327bc8a96b9c703a94683e251f1c7",
+    "normalization": "X=vendor X-body Xmin; Y=body Ymax-vendor Y; Z=base Zmin-vendor Z",
+    "clear_cover_assumption": "The standard cover shape is shown transparent; optical properties are illustrative."
+  },
+  "boards": {
+    "power": {
+      "source": "KiCAD_PCBs\\din_power_atm90e26\\din_power_atm90e26_v2.0-fit.kicad_pcb",
+      "rotation_axis": [0, 0, 1],
+      "rotation_deg": 0,
+      "translation_mm": [-104.268, 80.016, 0.045],
+      "datum": "86.9 x 32.8 mm PCB centered in manufacturer board-A position; nominal thickness 1.6 mm"
+    },
+    "meter": {
+      "source": "KiCAD_PCBs\\din_meter_atm90e26\\din_meter_atm90e26.kicad_pcb",
+      "rotation_axis": [1, 1, 1],
+      "rotation_deg": 120,
+      "translation_mm": [63.06, -127.76, 97.535],
+      "datum": "Candidate riser plane at base J4; finger insertion depth 8 mm, requires mating-model confirmation"
+    },
+    "host": {
+      "source": "KiCAD_PCBs\\din_isolated_SPI\\din_isolated_SPI.kicad_pcb",
+      "rotation_axis": [0, 0, 1],
+      "rotation_deg": 90,
+      "translation_mm": [-25.929, -114.582, 38.6],
+      "datum": "Host J1 and meter J5 pin-row centers aligned; height is provisional pending connector seating measurement"
+    }
+  },
+  "display_reservation": {
+    "origin_mm": [28, 6, 40.2],
+    "size_mm": [32, 24, 5],
+    "status": "illustrative keep-out only; no display part or mounting stack specified"
+  },
+  "insertion": {
+    "order": [
+      "Remove rail clip/base, both terminal guards and cover; unplug field wiring.",
+      "Evaluate power plus metering as a rigid subassembly entering from the rear, not through the display opening.",
+      "Fit the host/display carrier separately after seating the lower subassembly.",
+      "Refit guards/base/cover only after connector, cable and latch clearance is verified."
+    ],
+    "pivot_mm": [45.1, 18.15, 1.6],
+    "tilt_axis": [0, 1, 0],
+    "candidate_angles_deg": [0, 10, 20, 30],
+    "translation_step_mm": 2,
+    "angular_step_deg": 1,
+    "caution": "Sampled rigid-body BRep intersections, not a continuous swept-volume proof or snap-fit/deformation simulation."
+  }
+}
