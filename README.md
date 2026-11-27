@@ -13,45 +13,58 @@ and open-hardware teams rather than the commodity consumer-monitor market.
 
 See the [open NILM platform assessment and staged plan](docs/open-nilm-platform.md).
 
-## v2.0 enclosure-fit study
+## v2.0 three-PCB enclosure assembly
 
-Branch: `feature/v2.0-enclosure-fit`. The first board change recesses the power
-base's Nano-Fit CT connectors by 2 mm
-([whatnick/din_power_atm90e26#2](https://github.com/whatnick/din_power_atm90e26/issues/2)).
-The enclosure is provisionally identified as **Bud DMB-4770 with DMB-4770-CC**
-from its exact 86.9 x 32.8 mm base-PCB dimensions.
+The power and isolated-carrier submodules now use their canonical designs,
+not experimental board copies. The shortened **84.65 x 32.8 mm power PCB has
+R1 corners** and retains Nano-Fit connectors and eight permanent CT burdens.
+The carrier has **R2 corners** and preserves its isolation slot and ground
+domains. The metering PCB and its submodule revision are unchanged.
 
-![Power, metering and isolated host/display carrier in ghosted Bud enclosure](mechanical/renders/assembly.png)
+Both updated boards pass their configured **ERC, all-track DRC, schematic
+parity and unconnected-item checks**. Canonical project files and validation
+reports live in the respective submodules:
+[power](KiCAD_PCBs/din_power_atm90e26/README.md) and
+[carrier](KiCAD_PCBs/din_isolated_SPI/README.md).
+Superseded candidate boards, comparison renders and study scripts have been
+removed from the active repositories; earlier committed work remains in Git history.
 
-Green: power/sampling base. Blue: metering riser. Purple: isolated host/display
-carrier. Amber: **unspecified display keep-out**, not a selected display.
-The enclosure uses manufacturer STEP geometry; the standard cover is rendered
-transparent as a representative of the optional clear cover. Missing legacy
-component models are listed in the fit report, not silently treated as empty space.
+### Board assembly followed by whole-assembly insertion
 
-![Exploded three-board C-shaped assembly](mechanical/renders/exploded.png)
+![Power, metering and carrier assembly followed by nominal enclosure insertion](mechanical/renders/assembly-insertion.gif)
 
-![Twenty-degree rear-insertion candidate with base and guards removed](mechanical/renders/rear-insertion-study.png)
+[Download the MP4 animation](mechanical/renders/assembly-insertion.mp4) ·
+[Exploded board set](mechanical/renders/exploded.png) ·
+[Source hashes and sampled contacts](mechanical/fit-report.json)
 
-The insertion image is a **candidate motion, not proof of clearance**. The
-90 mm body cannot be treated as a simple slide-in tube through its small display
-opening. Remove the base, guards and cover; evaluate the lower power/metering
-subassembly entering from the rear and fit the host carrier separately.
-The sampled rotation checks and actual intersections are recorded in
-[`mechanical/fit-report.json`](mechanical/fit-report.json).
-**All four tested insertion candidates collide.** The power board's supplied
-Phoenix terminal model intersects the body/left guard, and the host/riser seating
-still needs correction. The Nano-Fit models no longer intersect their guard.
-The parent deliberately selects the experimental v2.0-fit PCB; the original
-power PCB remains intact because three CT connections are not yet routed.
+The sequence attaches the carrier to the metering board from below, inserts
+the combined pair into the power PCB's PCI slot, then rotates and inserts the
+entire set through the open rear of the **Bud DMB-4770**. Nano-Fit cable
+plugs are fitted **after** the boards are seated. It uses the **LOLIN S3 Mini
+Pro's integrated TFT**, rather than a separate OLED stack, with provisional
+2.5 mm short-header bodies and up to **3 degrees** of riser motion.
 
-[`mechanical/assembly.json`](mechanical/assembly.json) records tool-neutral
-datums, transforms, nominal board levels, source links, insertion candidates
-and unresolved seating assumptions. See the
-[reproduction and release gates](mechanical/README.md).
-This fit prototype preserves the isolated-host slot and existing ground-domain
-separation. **It is not an approved SELV base or a direct-mains production release.**
+**This is a nominal motion, not a verified collision-free insertion.**
+The animation identifies the first sampled contact and highlights subsequent
+intersections in red while continuing toward the nominal seat. The vendor
+enclosure model is **uncut**; the user reports physical fit with enclosure
+cuts, whose dimensions have not yet been measured. Riser motion is a kinematic
+allowance, not validated FR4 bending or connector retention.
+
+![Nominal seated three-PCB assembly with transparent cover](mechanical/renders/seated.png)
+
+[Mechanical datums, assumptions and reproduction](mechanical/README.md) ·
+[Publication checksums and decode checks](mechanical/publication-manifest.json) ·
+[Existing physical product](docs/Assembled_v1.jpg)
+
+Socket engagement, S3 pin compatibility and underside components, actual
+enclosure cuts, J1 model identity and cable bends still require physical
+validation. The current model's height may be overestimated relative to the
+physical assembly; the nominal seating datums have not yet been measured.
+Passing configured electrical checks does **not** establish
+SELV compliance, mains safety or fabrication approval.
 
 ## Connectors BOM
 
-Stereo cable assembly [Multicomp](https://au.element14.com/pro-signal/ps000043/adapter-stereo-3-5mm-rcpt-rcpt/dp/2787082)
+Stereo cable assembly:
+[Multicomp / Pro Signal PS000043](https://au.element14.com/pro-signal/ps000043/adapter-stereo-3-5mm-rcpt-rcpt/dp/2787082).

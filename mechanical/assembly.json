@@ -1,5 +1,5 @@
 {
-  "revision": "2.0-fit",
+  "revision": "2.0",
   "units": "mm",
   "status": "engineering fit study; not a manufacturing release",
   "enclosure": {
@@ -14,11 +14,11 @@
   },
   "boards": {
     "power": {
-      "source": "KiCAD_PCBs\\din_power_atm90e26\\din_power_atm90e26_v2.0-fit.kicad_pcb",
+      "source": "KiCAD_PCBs\\din_power_atm90e26\\din_power_atm90e26.kicad_pcb",
       "rotation_axis": [0, 0, 1],
       "rotation_deg": 0,
       "translation_mm": [-104.268, 80.016, 0.045],
-      "datum": "86.9 x 32.8 mm PCB centered in manufacturer board-A position; nominal thickness 1.6 mm"
+      "datum": "84.65 x 32.8 mm shortened R1 PCB; original connector datum retained; nominal thickness 1.6 mm"
     },
     "meter": {
       "source": "KiCAD_PCBs\\din_meter_atm90e26\\din_meter_atm90e26.kicad_pcb",
@@ -32,26 +32,42 @@
       "rotation_axis": [0, 0, 1],
       "rotation_deg": 90,
       "translation_mm": [-25.929, -114.582, 38.6],
-      "datum": "Host J1 and meter J5 pin-row centers aligned; height is provisional pending connector seating measurement"
+      "datum": "Host J1 and meter J5 pin-row centers aligned; nominal Z=38.6 is provisional and may overestimate actual assembly height. Do not equate catalogue mated height with a vertical board-to-board offset for this perpendicular pair."
     }
   },
-  "display_reservation": {
-    "origin_mm": [28, 6, 40.2],
-    "size_mm": [32, 24, 5],
-    "status": "illustrative keep-out only; no display part or mounting stack specified"
+  "module": {
+    "part": "LOLIN S3 Mini Pro with integrated TFT",
+    "reference": "https://www.wemos.cc/en/latest/s3/s3_mini_pro.html",
+    "coordinates": "Host STEP coordinates before the host assembly transform; Z follows actual exported carrier top",
+    "pcb_xy_mm": [119.888, -85.436],
+    "pcb_size_mm": [25.4, 34.3, 1.6],
+    "tft_xy_mm": [123.588, -77.286],
+    "tft_size_mm": [18, 18, 2],
+    "usb_xy_mm": [128.838, -86.436],
+    "usb_size_mm": [7.5, 6, 3.2],
+    "header_xy_mm": [[119.888, -78.446], [142.748, -78.446]],
+    "header_size_mm": [2.54, 20.32, 2.5],
+    "assumption": "Module outline from Wemos; thickness, 2.5 mm seated header gap, TFT/USB envelopes, connector orientation and electrical pin compatibility remain unverified. No separate OLED."
+  },
+  "riser_allowance": {
+    "pivot_mm": [63.06, 18.15, 8],
+    "axis": [0, 1, 0],
+    "maximum_deg": 3,
+    "approach_deg": -3,
+    "assumption": "Kinematic allowance only, not a validated FR4 strain, solder-joint or socket-retention model."
   },
   "insertion": {
     "order": [
       "Remove rail clip/base, both terminal guards and cover; unplug field wiring.",
-      "Evaluate power plus metering as a rigid subassembly entering from the rear, not through the display opening.",
-      "Fit the host/display carrier separately after seating the lower subassembly.",
+      "Attach the carrier/S3 to the metering board from below; then insert the combined pair into the power PCB PCI socket outside the enclosure.",
+      "Tilt and insert the three-PCB set from the open rear with up to 3 degrees of riser allowance; the two Nano-Fit cable plugs are absent.",
+      "After the assembly is seated, attach the Nano-Fit cable plugs; wiring and mating access must be checked physically.",
       "Refit guards/base/cover only after connector, cable and latch clearance is verified."
     ],
     "pivot_mm": [45.1, 18.15, 1.6],
     "tilt_axis": [0, 1, 0],
-    "candidate_angles_deg": [0, 10, 20, 30],
-    "translation_step_mm": 2,
-    "angular_step_deg": 1,
-    "caution": "Sampled rigid-body BRep intersections, not a continuous swept-volume proof or snap-fit/deformation simulation."
+    "approach_angle_deg": 20,
+    "outside_z_mm": -92,
+    "caution": "Full nominal motion is illustrated even after modeled contact. Red intersections with the uncut body are not a collision-free fit claim; actual enclosure cuts are unmeasured."
   }
 }

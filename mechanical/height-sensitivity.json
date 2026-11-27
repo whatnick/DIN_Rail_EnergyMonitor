@@ -1,0 +1,25 @@
+{
+  "motion_report_sha256": "4cebc51ed5b79545d392456811030519056fc1a4764a85a5243186128113a63f",
+  "host_step_sha256": "8513201349eda5fe6464da3d940f9fcc9de6c960663285f1ebce5aba453c12db",
+  "enclosure_sha256": "0a4ee42e9aa243da2288e6669540a4984a8327bc8a96b9c703a94683e251f1c7",
+  "pose": {
+    "angle_deg": 20,
+    "z_mm": -28,
+    "riser_deg": -3
+  },
+  "samples": [
+    {
+      "host_only_z_shift_mm": 0,
+      "host_pcb_body_overlap_mm3": 1.951915
+    },
+    {
+      "host_only_z_shift_mm": -1,
+      "host_pcb_body_overlap_mm3": 0.666294
+    },
+    {
+      "host_only_z_shift_mm": -2,
+      "host_pcb_body_overlap_mm3": 0.0
+    }
+  ],
+  "limitation": "One-pose host-PCB-only mathematical sensitivity. The host connector, components and S3 do not move in this calculation; shifts do not preserve mating and are not proposed placements, clearance paths or fit validation."
+}

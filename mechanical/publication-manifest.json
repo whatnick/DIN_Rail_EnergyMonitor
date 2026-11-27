@@ -1,0 +1,35 @@
+{
+  "report_sha256": "4cebc51ed5b79545d392456811030519056fc1a4764a85a5243186128113a63f",
+  "render_manifest_sha256": "7197377c5e6a3d78313be7f8bb479c3ff41758c78e3a53ca53643ff4b74ad1ba",
+  "rendered_poses": 91,
+  "decoded_gif_frames": 91,
+  "decoded_video_frames": 116,
+  "gif_resolution": [
+    768,
+    576
+  ],
+  "video_resolution": [
+    1024,
+    768
+  ],
+  "duration_ms": 23200,
+  "all_frames_decoded": true,
+  "publications": {
+    "assembly-insertion.gif": {
+      "sha256": "592b36ea1fa62513e100ffc06b1a4d3562b870362485577f374d29cfbe839625",
+      "bytes": 3839120
+    },
+    "assembly-insertion.mp4": {
+      "sha256": "e77ab0e275ecdfd7ef1105b74746eff4ee6fad8606efba5dfdaaeefb5a212fa8",
+      "bytes": 520992
+    },
+    "exploded.png": {
+      "sha256": "2a4c5b41b64c3355ede99f21273a59cba7a8c166e18362b5ee4157d9d23e546d",
+      "bytes": 433714
+    },
+    "seated.png": {
+      "sha256": "bd77e367dd535d45be1039e0ee2483e137431f5f47a7c1f6cce2087b0355255e",
+      "bytes": 481640
+    }
+  }
+}

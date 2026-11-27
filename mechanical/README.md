@@ -1,74 +1,134 @@
-# DIN v2.0 mechanical fit
+# Canonical v2.0 assembly
 
-This is a source-based **engineering fit study**, not a release approval.
-The parent pins the changed power board while leaving unchanged metering and
-host submodule revisions explicit. No vendor enclosure CAD is redistributed.
-It selects the separate **experimental** v2.0-fit layout, not the unchanged
-legacy production PCB. Three unrouted CT connections block fabrication.
+`assembly.json` records tool-neutral dimensions, transforms and assumptions.
+The active pipeline contains no alternate PCB candidates. Power and carrier
+come from the exact committed submodule revisions; the metering repository
+remains pinned at `9230d0efbb124c0492c8161200cb30ad9d554fdd`.
 
-## Reproduce
+The shortened power board uses four R1 mm corners; the carrier uses four
+R2 mm corners and retains all four sides of its isolation slot. Connector
+datums and electrical routing are preserved. The power R2 trial was rejected
+because it reduced the IN2- copper-to-edge clearance.
 
-Initialize the three submodules named in `assembly.json`. Use KiCad 10 CLI,
-FreeCAD with its bundled Python, and Blender. On the development Windows machine:
+## What the animation establishes
+
+The carrier attaches from below to the unchanged metering riser; the combined
+pair then enters the power-board PCI socket. The complete set is rotated and
+inserted from the rear without its Nano-Fit plugs, which are attached only
+after seating. Base, clip, guards and cover are removed during insertion.
+The separate seated image restores those enclosure pieces illustratively.
+Mating trajectories are explanatory, not verified connector engagement paths.
+
+The controller is an installed LOLIN S3 Mini Pro module with integrated TFT,
+not a redesigned fourth PCB. Its 25.4 x 34.3 mm outline is represented by
+bounding geometry. PCB thickness, display/USB height, underside parts and
+the 2.5 mm seated header gap need measurement. Two exported 6.6 mm socket
+bodies are replaced **only in the visualization** by shorter proxies.
+The inherited carrier pinout has not been qualified for S3 electrical use.
+The user reports the actual stack is lower than the present model. Nominal
+meter and carrier Z datums, connector seating and the assumed short-header
+gap must be measured before applying a numerical height correction.
+Molex specifies 3.95 mm mated height for the 53290/52418 family, but the
+connector pair mounts perpendicular boards; do not subtract that dimension
+from the assembly's vertical height without a verified mating drawing and
+PCB reference planes.
+Carrier J1's schematic/STEP specify **53290-1080** while its footprint is
+named for **53253-1070** (Micro-Latch); the meter uses **52418-1010**.
+The 53290 drawing identifies the 52418 series as its mate, but the footprint,
+model offsets, installed parts and pin engagement have not been reconciled.
+This mismatch prevents treating the rendered connector seat as authoritative.
+[53290 drawing](https://docs.rs-online.com/9e1e/0900766b80f757d7.pdf)
+
+At the 20-degree / -28 mm first-contact pose, a *mathematical host-PCB-only*
+shift of -1 mm changes its overlap from 1.952 to 0.666 mm^3; -2 mm yields
+zero overlap for that PCB at that one pose. These shifts deliberately do
+not move its connector, components or S3 and therefore break the modeled
+mating relationship. They demonstrate measurement sensitivity only, not a
+valid placement, a clear path, or a proposed 2 mm cut.
+[Inputs and samples](height-sensitivity.json) can be regenerated with
+`study_height_sensitivity.py` after running the assembly exporter.
+
+The meter/carrier/module group is allowed up to 3 degrees of rigid rotation
+about the riser datum. At a 31 mm lever arm this corresponds to approximately
+1.62 mm lateral travel. This is not a strain, solder-joint, socket-retention
+or fatigue model. The illustrated allowance returns to zero at the nominal seat.
+
+**The animation is not a clear-path result.** It continues after the first
+sampled intersection so the complete nominal motion can be understood.
+Red geometry denotes computed BRep overlap with the uncut enclosure body;
+yellow rings locate contacts. Volumes are sums across groups, not a Boolean
+union or a clearance-distance measurement. Samples are not a continuous sweep.
+The user reports a fitting enclosure with bottom cuts; no guessed cuts have
+been subtracted from the vendor CAD.
+
+`fit-report.json` records every sampled pose, first contact, per-group overlap,
+source commits/PCB hashes, vendor-model hashes and legacy meter model aliases.
+Enclosure checks are skipped during the outside `carrier` and `meter`
+mating phases; their zero overlap values are placeholders, not clearance tests.
+`publication-manifest.json` records checksums, media sizes, timing and successful
+decoding of every GIF/MP4 frame.
+
+## Reproduce on Windows
+
+Requirements: KiCad 10 with its standard STEP library, FreeCAD Python with
+`Part`/`Mesh`, Blender, normal Python with Pillow, and FFmpeg. Tools are not
+downloaded automatically. Keep generated geometry outside the repository.
+
+Obtain the enclosure STEP from the manufacturer link in `assembly.json` and
+the supplied Molex `1053081208` receptacle STEP. The pipeline requires their
+reviewed SHA-256 hashes and does not redistribute either vendor asset.
+Do not silently substitute a different vendor file.
+
+Initialize the pinned submodules. If intentionally changing their revisions,
+validate/commit the board repositories and stage the corresponding parent
+gitlinks before exporting. The exporter rejects uncommitted PCB changes or
+an unexpected metering revision and runs fresh ERC/DRC/parity checks on the
+two updated canonical projects.
 
 ```powershell
-$cache = Join-Path $env:TEMP "din-v2-fit"
-& "C:\Program Files\FreeCAD 0.19\bin\python.exe" .\mechanical\build_assembly.py --cache $cache
-& "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" --background --python .\mechanical\render_assembly.py -- --cache $cache --output .\mechanical\renders
+git submodule update --init --recursive
+$cache = "$env:TEMP\din-v2-assembly"
+$frames = "$env:TEMP\din-v2-frames"
+& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' -B .\mechanical\build_assembly.py `
+  --cache $cache --enclosure-step 'C:\CAD\hbdmb4770.step' `
+  --molex-step 'C:\CAD\1053081208-user.stp'
+& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' -B .\mechanical\study_height_sensitivity.py `
+  --cache $cache --enclosure-step 'C:\CAD\hbdmb4770.step'
+& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' -b --threads 4 `
+  --python .\mechanical\render_assembly.py -- --cache $cache --output $frames
+python -B .\mechanical\publish_assembly.py --cache $cache --frames $frames `
+  --ffmpeg 'C:\Tools\ffmpeg.exe'
 ```
 
-The first command downloads the manufacturer STEP into the cache and checks its
-SHA-256 before normalizing it. It exports the pinned PCB files, logs missing
-models, performs solid-intersection tests, writes `fit-report.json`, and saves
-an editable FreeCAD assembly in the cache. The second produces actual CAD
-renders and saves a Blender scene there. Keep the cache out of Git.
-FreeCAD/Blender files and rendered images are derived artifacts; the reconstruction
-interface is the dimensioned manifest plus pinned board sources.
+Only the old metering board's model references are rebased in a cache copy:
+legacy SSOP, 0402/0603 passives and crystal models use current KiCad package
+equivalents. Its local Molex model is resolved from the unchanged submodule.
+PCB geometry, footprints, electrical files and submodule pin are not edited.
+Package equivalents are visual proxies, not verified manufacturer models.
 
-## Datums and limits
+## Remaining physical and safety gates
 
-Bud's [DMB-4770 product page](https://www.budind.com/product/general-use-boxes/din-rail-mount-multi-board-box-series/dmb-4770/)
-links the [two-sheet drawing](https://www.budind.com/wp-content/uploads/2019/01/hb4770.pdf)
-and STEP source. Board A is 86.9 x 32.8 x 1.6 mm; boards B/C are nominally
-58.7 x 32.5 mm and 42 x 32 mm. The legacy architecture uses **a vertical riser**,
-not three boards occupying those three horizontal rails.
+Measure the actual enclosure cuts, socket seating, S3 underside clearances
+and assembled stack height with a vernier. Verify Nano-Fit receptacle
+engagement, J1 part/model identity and wire bending/retention. The power
+board's manually soldered insulated sense link also needs physical validation.
+Keep all CT burden branches permanent while servicing sense connections.
 
-The vendor assembly includes reference PCBs and terminal blocks. These are
-excluded when inserting the project's own boards; the body, base, cover, clip
-and two guards remain. Coordinates use the base-PCB underside as Z=0, X along
-the 90.2 mm enclosure length, and Y across its 36.3 mm width. The vendor's large
-STEP coordinate offset is normalized, not approximated with a rectangular box.
+Configured ERC/DRC/parity passes are electrical-CAD checks, **not** isolation,
+SELV, mains safety, mechanical fit or manufacturing approval. The existing
+power circuit must not be treated as an approved SELV design.
 
-The power PCB is anchored to Bud's board-A position. The metering plane and
-host height are **candidate mating transforms**: measure socket insertion
-depth, row alignment and installed header height before accepting them.
-The host's 11.43 x 2.032 mm isolation slot remains intact. The legacy Wemos STEP
-is empty, and no complete display/headers/cable-bend model has been specified.
-Their omission is a blocker, not evidence that they fit.
+## Fit-improvement priorities
 
-The supplied J1 Phoenix STEP appears to represent a different terminal family
-from the footprint identification. Verify the fitted part number and model
-alignment before moving J1 or claiming that its enclosure collisions are real
-hardware interference. Do not shift a mismatched model merely to hide overlap.
-
-Static tests report overlap volume for each board against every enclosure part,
-and between boards. Rear insertion tests sample power plus metering at 0/10/20/30
-degrees, 2 mm translation increments and at most 1 degree rotation increments.
-A sampled clear path is **not** a continuous swept-volume or tolerance proof.
-Connector contact geometry, latch flex, wiring bend radius, guards and field
-access must be reviewed separately. Never call a colliding candidate "fits".
-
-## Release gates
-
-Confirm the physical enclosure's part number and clear-cover variant. Resolve
-reported solid intersections and check a physical dry-fit with all mating plugs,
-Wemos/header stack, selected display, battery and wires. Check installation and
-removal with the base/guards detached, not just the final assembled pose.
-
-The v2.0-fit power-board change addresses connector overhang; it does not convert
-the old mains circuit to the parent roadmap's SELV developer architecture.
-Preserve voltage/current conditioning, GNDA/GNDPWR separation, and the host's
-isolation slot. Fresh-zone PCB DRC, safety separation, keyed legacy-riser
-compatibility and the dedicated SELV electrical redesign remain independent gates
-under [whatnick/DIN_Rail_EnergyMonitor#2](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/2)
-and [whatnick/DIN_Rail_EnergyMonitor#3](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/3).
+1. Measure the PCI depth, carrier connector seat, short-header gap and actual
+   cut enclosure. Re-model the seated stack before changing a PCB.
+2. Examine carrier edges near the first contact and trim only after checking
+   copper-to-edge, connector support, isolation slot and creepage.
+3. If power-board space is the remaining constraint, investigate 0402 burden
+   packages as an optimization, not a direct height fix. Each 2.4 ohm burden
+   dissipates about 6 mW at 50 mA RMS; verify overload, pulse rating,
+   derating, precision and solderability before changing the current 0603
+   parts or rerouting. Keep every CT burden permanently connected.
+4. Consider connector placement or a measured enclosure cut only after
+   checking the plug mating direction, cable bend and retention. Keep the
+   present Nano-Fit system where practical.
