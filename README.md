@@ -43,6 +43,9 @@ entire set through the open rear of the **Bud DMB-4770**. Nano-Fit cable
 plugs are fitted **after** the boards are seated. It uses the **LOLIN S3 Mini
 Pro's integrated TFT**, rather than a separate OLED stack, with provisional
 2.5 mm short-header bodies and up to **3 degrees** of riser motion.
+The carrier is modeled to the left of the riser and lower than before, with
+the TFT top approximately flush with the metering PCB top. This is a
+provisional placement, not a measured connector seat.
 
 **This is a nominal motion, not a verified collision-free insertion.**
 The animation identifies the first sampled contact and highlights subsequent
@@ -59,8 +62,8 @@ allowance, not validated FR4 bending or connector retention.
 
 Socket engagement, S3 pin compatibility and underside components, actual
 enclosure cuts, J1 model identity and cable bends still require physical
-validation. The current model's height may be overestimated relative to the
-physical assembly; the nominal seating datums have not yet been measured.
+validation. The lower display position, short-header gap and connector seating
+datums have not yet been measured.
 Passing configured electrical checks does **not** establish
 SELV compliance, mains safety or fabrication approval.
 

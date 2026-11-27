@@ -7,24 +7,24 @@
       "commit": "e98d0de505837822fd1c511ef21551f8d532e804",
       "pcb_sha256": "ae73d82a404831fb694b2fe61e015f3415cf0a84137607cf323f6172f23efecc",
       "committed_pcb_sha256": "ae73d82a404831fb694b2fe61e015f3415cf0a84137607cf323f6172f23efecc",
-      "step_sha256": "7352766dcebb45d196e43c5a3128c7430ee7bad112860ffb5b26376702d92e84"
+      "step_sha256": "1b0c4c597faada089fd3e68868f2bcc8191d9131f0e73293ec6ef4fa4115191c"
     },
     "meter": {
       "source": "KiCAD_PCBs\\din_meter_atm90e26\\din_meter_atm90e26.kicad_pcb",
       "commit": "9230d0efbb124c0492c8161200cb30ad9d554fdd",
       "pcb_sha256": "365022ef0c1cc211d5fb3f373655a69ef62bee38141b51d9a181ef5591179fb6",
       "committed_pcb_sha256": "5c6e0043e7d0f5c19a6a1b50a2e34fa15d4b7641616c122772ec063d01de190d",
-      "step_sha256": "b36853e3da74a7963ec54c64b11deb21f32d83b5a7e13e71f58c31ea5f5089f6"
+      "step_sha256": "51ac25d5e455b05af88940c1384948bbf51e0a4ec3b0e72a2f3ec33e716ce742"
     },
     "host": {
       "source": "KiCAD_PCBs\\din_isolated_SPI\\din_isolated_SPI.kicad_pcb",
       "commit": "f22204c8d721195e13e4af4151c40e2a82439126",
       "pcb_sha256": "2ae4209f5b09aa797294ed6edcf26e378d96af7d00e4f271ce1e13bc153f9d6c",
       "committed_pcb_sha256": "2ae4209f5b09aa797294ed6edcf26e378d96af7d00e4f271ce1e13bc153f9d6c",
-      "step_sha256": "8513201349eda5fe6464da3d940f9fcc9de6c960663285f1ebce5aba453c12db"
+      "step_sha256": "7efbb929e78823e1b87c6913070fc8cc8fe52d860765f586775e8cbacdddf91b"
     }
   },
-  "config_sha256": "e0455b326ae90a56b348d76914ed6d6d82b600cb0c6bde695dd9fd642c51c27a",
+  "config_sha256": "13696a0d52b7223371f1b891dd534281470f519235b73837dc2859d89f1e2c9c",
   "enclosure_sha256": "0a4ee42e9aa243da2288e6669540a4984a8327bc8a96b9c703a94683e251f1c7",
   "molex_receptacle_sha256": "d6869b778b0c0f52e6d0116f89b77f505835ec5169ee50730b6dc643fce282d9",
   "meter_visual_model_substitutions": {
@@ -56,6 +56,25 @@
       "path": "C:\\Program Files\\KiCad\\10.0\\share\\kicad\\3dmodels\\Capacitor_SMD.3dshapes\\C_0603_1608Metric.step",
       "sha256": "4857b3dc717675bf1fb22edda622ac3b3ae03cf44d81eefaf3fa3ba3a86d84c1"
     }
+  },
+  "upper_alignment": {
+    "meter_pcb_top_z_mm": 39.135,
+    "carrier_pcb_top_z_mm": 33.035,
+    "s3_pcb_top_z_mm": 37.135,
+    "tft_top_z_mm": 39.135,
+    "usb_top_z_mm": 40.335,
+    "meter_pcb_left_x_mm": 63.06,
+    "s3_pcb_right_x_mm": 55.007,
+    "checked_non_mating_overlaps_mm3": {
+      "carrier_pcb_to_meter_pcb_mm3": 0.0,
+      "s3_pcb_to_meter_pcb_mm3": 0.0,
+      "s3_tft_to_meter_pcb_mm3": 0.0,
+      "s3_usb_to_meter_pcb_mm3": 0.0,
+      "carrier_pcb_to_power_mm3": 0.0
+    },
+    "host_j1_meter_j5_intersection_mm3": 0.152074,
+    "connector_row_center_difference_y_mm": 0.003,
+    "connector_note": "Intersections include mated model contacts and potential housing clashes; their value does not verify engagement. J1 footprint/model identity and the physical connector seat require independent measurement."
   },
   "intersection_threshold_mm3": 0.01,
   "first_contact_frame": 65,
@@ -851,13 +870,12 @@
       "plugs_present": false,
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
-        "meter_pcb": 0.041148,
-        "host_pcb": 1.951915
+        "meter_pcb": 0.041148
       },
-      "summed_intersection_mm3": 1.993063,
+      "summed_intersection_mm3": 0.041148,
       "contact_mesh": {
         "file": "contact-065.stl",
-        "sha256": "feac4f335c23f7b1023c7aa9b16b81672d8ad7e029879b7b1ad5b4f39f1186ce"
+        "sha256": "2751b2ef88190f3535bd448202422a57d50cf679cde2ee3b023b6c0840f91f0f"
       }
     },
     {
@@ -870,13 +888,12 @@
       "plugs_present": false,
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
-        "meter_pcb": 0.047369,
-        "host_pcb": 2.073157
+        "meter_pcb": 0.047369
       },
-      "summed_intersection_mm3": 2.120526,
+      "summed_intersection_mm3": 0.047369,
       "contact_mesh": {
         "file": "contact-066.stl",
-        "sha256": "48ae1c205b31a3c8094e1e7c2243eabc9f6fedb447a01315230ae818304d6379"
+        "sha256": "457e631977701aa846d33d952592e1da9ae37a11015aad1bcb809512364094f9"
       }
     },
     {
@@ -889,13 +906,12 @@
       "plugs_present": false,
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
-        "meter_pcb": 0.053589,
-        "host_pcb": 2.196402
+        "meter_pcb": 0.053589
       },
-      "summed_intersection_mm3": 2.249991,
+      "summed_intersection_mm3": 0.053589,
       "contact_mesh": {
         "file": "contact-067.stl",
-        "sha256": "cfbc8eeab1501236f8d63e2659018cdbd803e5c4e5b4c97fce01359063ea86ef"
+        "sha256": "8dda54939b21ebdf6ac0a999a3b8f1344cb44d82650d7ca8343d557c3d8e4800"
       }
     },
     {
@@ -910,13 +926,12 @@
       "per_group_intersection_mm3": {
         "power_pcb": 4.485402,
         "power_components": 0.386921,
-        "meter_pcb": 0.059809,
-        "host_pcb": 2.321537
+        "meter_pcb": 0.059809
       },
-      "summed_intersection_mm3": 7.253669,
+      "summed_intersection_mm3": 4.932132,
       "contact_mesh": {
         "file": "contact-068.stl",
-        "sha256": "da904c8948d7291400a350440d1ee23304e07181ab71d168d147e4fefaf9d284"
+        "sha256": "e4a2b761977d30524505106d587f573c605e472daa2a928a2d39a0575d759c31"
       }
     },
     {
@@ -931,14 +946,12 @@
       "per_group_intersection_mm3": {
         "power_pcb": 5.079223,
         "power_components": 61.401212,
-        "meter_pcb": 0.06603,
-        "host_pcb": 2.448456,
-        "host_components": 0.975745
+        "meter_pcb": 0.06603
       },
-      "summed_intersection_mm3": 69.970666,
+      "summed_intersection_mm3": 66.546465,
       "contact_mesh": {
         "file": "contact-069.stl",
-        "sha256": "9a6a5b58d08f2abecc861851c95bb39ed45ea23bfdc5b8afa9111c29b2c78c63"
+        "sha256": "7567e6c6b6b5c09ad8913f099904083a6f20886c9b79a55268cf9e6a5c69a873"
       }
     },
     {
@@ -953,14 +966,12 @@
       "per_group_intersection_mm3": {
         "power_pcb": 5.079223,
         "power_components": 61.401212,
-        "meter_pcb": 0.06603,
-        "host_pcb": 2.448456,
-        "host_components": 0.975745
+        "meter_pcb": 0.06603
       },
-      "summed_intersection_mm3": 69.970666,
+      "summed_intersection_mm3": 66.546465,
       "contact_mesh": {
         "file": "contact-070.stl",
-        "sha256": "9a6a5b58d08f2abecc861851c95bb39ed45ea23bfdc5b8afa9111c29b2c78c63"
+        "sha256": "7567e6c6b6b5c09ad8913f099904083a6f20886c9b79a55268cf9e6a5c69a873"
       }
     },
     {
@@ -974,14 +985,12 @@
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
         "power_pcb": 1.691303,
-        "power_components": 64.135918,
-        "host_pcb": 0.175976,
-        "host_components": 6.654314
+        "power_components": 64.135918
       },
-      "summed_intersection_mm3": 72.657511,
+      "summed_intersection_mm3": 65.827221,
       "contact_mesh": {
         "file": "contact-071.stl",
-        "sha256": "19beacccc735f8809253cc961e15453f3b6443d3690656c947cdc554bad91d2b"
+        "sha256": "b53aa4501317e358179f6f49d344207901ce6a57cd8b12f4a29cef4857aaa7c3"
       }
     },
     {
@@ -995,13 +1004,12 @@
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
         "power_pcb": 0.000483,
-        "power_components": 66.989606,
-        "host_components": 0.759688
+        "power_components": 66.989606
       },
-      "summed_intersection_mm3": 67.749777,
+      "summed_intersection_mm3": 66.990089,
       "contact_mesh": {
         "file": "contact-072.stl",
-        "sha256": "05465c64b9903f173a4d7434d8b133b3b140b2cd58691155cd6bd8837fc873c9"
+        "sha256": "a12334cd3b04f847f40799ae4214aa9e881b7e36501104575c53f146c9d738c7"
       }
     },
     {
@@ -1068,13 +1076,12 @@
       "plugs_present": false,
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
-        "power_components": 61.926531,
-        "s3_usb": 0.693152
+        "power_components": 61.926531
       },
-      "summed_intersection_mm3": 62.619683,
+      "summed_intersection_mm3": 61.926531,
       "contact_mesh": {
         "file": "contact-076.stl",
-        "sha256": "5d92fdac0be83f43d68ad84fee94c02d10871007c19db27a98858a98c3e74488"
+        "sha256": "03984cf050cf062ebe9ed4417f0c23139659b90533fbb38d01cd98e7550e2b9f"
       }
     },
     {
@@ -1088,13 +1095,12 @@
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
         "power_pcb": 0.04353,
-        "power_components": 59.286307,
-        "host_components": 2.500569
+        "power_components": 59.286307
       },
-      "summed_intersection_mm3": 61.830406,
+      "summed_intersection_mm3": 59.329837,
       "contact_mesh": {
         "file": "contact-077.stl",
-        "sha256": "5d3a15e4a3693a1e2d159e94a28b5c60aed6281d10464a4cfc7801b987a29993"
+        "sha256": "71aac067a7285484655215fcaeceda26d3810da9479f2192de39925ea4e1fc09"
       }
     },
     {
@@ -1108,13 +1114,12 @@
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
         "power_pcb": 0.418286,
-        "power_components": 58.927494,
-        "host_components": 11.799403
+        "power_components": 58.927494
       },
-      "summed_intersection_mm3": 71.145183,
+      "summed_intersection_mm3": 59.34578,
       "contact_mesh": {
         "file": "contact-078.stl",
-        "sha256": "a3b45c5ba323c53ee547fb4382bb72bc80c5da6a53e1c90c34f53b2cc2cd1aaa"
+        "sha256": "d20a0b81958e7d72c8325eefb50ae1ae80a67f9d4e2dfaa083f38637827d6f47"
       }
     },
     {
@@ -1127,15 +1132,12 @@
       "plugs_present": false,
       "plug_offset_mm": 0,
       "per_group_intersection_mm3": {
-        "power_components": 58.663875,
-        "s3_pcb": 0.040375,
-        "host_pcb": 9.308474,
-        "host_components": 17.998856
+        "power_components": 58.663875
       },
-      "summed_intersection_mm3": 86.01158,
+      "summed_intersection_mm3": 58.663875,
       "contact_mesh": {
         "file": "contact-079.stl",
-        "sha256": "e7fcfea4ce9b193f883347cae4452747790def06983b66e49a3ced48552c7b39"
+        "sha256": "740b63e52fdd69b83e79f065d0b2f6bcbc67e46877f74f5a25c375132cccd065"
       }
     },
     {
@@ -1151,14 +1153,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-080.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1174,14 +1174,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-081.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1197,14 +1195,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-082.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1220,14 +1216,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-083.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1243,14 +1237,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-084.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1266,14 +1258,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-085.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1289,14 +1279,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-086.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1312,14 +1300,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-087.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1335,14 +1321,12 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337
+        "s3_pcb": 19.29173
       },
-      "summed_intersection_mm3": 85.6748,
+      "summed_intersection_mm3": 78.05491,
       "contact_mesh": {
         "file": "contact-088.stl",
-        "sha256": "c4cc454c3e104427b50e913930be76b4627cc5e714de63f95fb0f046dbbe4b0c"
+        "sha256": "0bd9d79bb8f1d1b88141b33e4f9f4c27c38587f896f21cd29861af769992aa44"
       }
     },
     {
@@ -1358,16 +1342,14 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337,
+        "s3_pcb": 19.29173,
         "plug_1": 2.688197,
         "plug_2": 2.688197
       },
-      "summed_intersection_mm3": 91.051194,
+      "summed_intersection_mm3": 83.431304,
       "contact_mesh": {
         "file": "contact-089.stl",
-        "sha256": "328082f52de27f2b176dc99f1400d398786b572e4a03d76b8d1347b4d550a02b"
+        "sha256": "24a87e3e64c69c8161e03d81228dbaf9245612bc185f4c16c5fcfa51a8c2b2f6"
       }
     },
     {
@@ -1383,16 +1365,14 @@
         "power_components": 58.470869,
         "meter_pcb": 0.216592,
         "meter_components": 0.075719,
-        "s3_pcb": 0.677594,
-        "host_pcb": 26.007689,
-        "host_components": 0.226337,
+        "s3_pcb": 19.29173,
         "plug_1": 5.510652,
         "plug_2": 5.510652
       },
-      "summed_intersection_mm3": 96.696104,
+      "summed_intersection_mm3": 89.076214,
       "contact_mesh": {
         "file": "contact-090.stl",
-        "sha256": "16f33707e0179b2555a5597cb4afc675358ed852ba5337bba4e2a3b52d95f42b"
+        "sha256": "51a9367b087968364255f6589a92071f5f26f78391616d69aa8d5d0a5f607c5b"
       }
     }
   ],
@@ -1402,7 +1382,7 @@
     "The motion continues after contact to illustrate the nominal seat; contacts are highlighted.",
     "Meter/carrier mating trajectories and seating datums require physical measurement.",
     "The carrier is attached from below before the combined pair enters the PCI socket; Nano-Fit plugs are absent until after nominal seating.",
-    "The current riser and carrier Z datums may overestimate the physical stack height; no unmeasured correction has been applied.",
+    "The lower-left carrier datum is a provisional user-observation-constrained model, not a measured physical connector seat.",
     "Module outline from Wemos; thickness, 2.5 mm seated header gap, TFT/USB envelopes, connector orientation and electrical pin compatibility remain unverified. No separate OLED.",
     "Kinematic allowance only, not a validated FR4 strain, solder-joint or socket-retention model.",
     "Two 6.6 mm socket bodies are replaced visually with 2.5 mm proxies; PCB unchanged.",

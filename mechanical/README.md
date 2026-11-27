@@ -25,9 +25,14 @@ bounding geometry. PCB thickness, display/USB height, underside parts and
 the 2.5 mm seated header gap need measurement. Two exported 6.6 mm socket
 bodies are replaced **only in the visualization** by shorter proxies.
 The inherited carrier pinout has not been qualified for S3 electrical use.
-The user reports the actual stack is lower than the present model. Nominal
-meter and carrier Z datums, connector seating and the assumed short-header
-gap must be measured before applying a numerical height correction.
+Following the user's physical observation, the carrier and module are
+shifted together 4.5 mm left and 7.075 mm down from the earlier provisional
+assembly. With the assumed 2.5 mm short-header gap and 2 mm TFT proxy, the
+TFT top is flush with the metering PCB top and the module lies to its left.
+These dimensions are an illustrative starting datum, not measurements;
+the taller USB proxy may project above the meter. No PCB is modified.
+Meter and carrier datums, connector seating and the assumed short-header
+gap still require physical measurement.
 Molex specifies 3.95 mm mated height for the 53290/52418 family, but the
 connector pair mounts perpendicular boards; do not subtract that dimension
 from the assembly's vertical height without a verified mating drawing and
@@ -39,14 +44,17 @@ model offsets, installed parts and pin engagement have not been reconciled.
 This mismatch prevents treating the rendered connector seat as authoritative.
 [53290 drawing](https://docs.rs-online.com/9e1e/0900766b80f757d7.pdf)
 
-At the 20-degree / -28 mm first-contact pose, a *mathematical host-PCB-only*
-shift of -1 mm changes its overlap from 1.952 to 0.666 mm^3; -2 mm yields
-zero overlap for that PCB at that one pose. These shifts deliberately do
-not move its connector, components or S3 and therefore break the modeled
-mating relationship. They demonstrate measurement sensitivity only, not a
-valid placement, a clear path, or a proposed 2 mm cut.
-[Inputs and samples](height-sensitivity.json) can be regenerated with
-`study_height_sensitivity.py` after running the assembly exporter.
+The prior higher datum allowed the carrier and meter PCB solids to overlap.
+The lower-left model eliminates that modeled PCB-to-PCB intersection. The
+two inherited connector solids still intersect slightly; some may represent
+intended mating contacts, but model offsets and the actual mating parts are
+unverified. Do not treat this geometry as a connector fit approval.
+
+At the 20-degree / -28 mm sample with -3 degrees of riser allowance, the
+earlier carrier/body overlap was 1.952 mm^3; the adjusted carrier has no
+overlap at that sample. The unchanged metering PCB still overlaps the
+uncut body by 0.041 mm^3, and later poses have additional contacts. This is
+not a collision-free insertion or a comparison against the actual cut enclosure.
 
 The meter/carrier/module group is allowed up to 3 degrees of rigid rotation
 about the riser datum. At a 31 mm lever arm this corresponds to approximately
@@ -92,8 +100,6 @@ $frames = "$env:TEMP\din-v2-frames"
 & 'C:\Program Files\FreeCAD 0.19\bin\python.exe' -B .\mechanical\build_assembly.py `
   --cache $cache --enclosure-step 'C:\CAD\hbdmb4770.step' `
   --molex-step 'C:\CAD\1053081208-user.stp'
-& 'C:\Program Files\FreeCAD 0.19\bin\python.exe' -B .\mechanical\study_height_sensitivity.py `
-  --cache $cache --enclosure-step 'C:\CAD\hbdmb4770.step'
 & 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' -b --threads 4 `
   --python .\mechanical\render_assembly.py -- --cache $cache --output $frames
 python -B .\mechanical\publish_assembly.py --cache $cache --frames $frames `

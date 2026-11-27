@@ -71,6 +71,22 @@ def contact(shape, enclosure, boxes):
     return Part.makeCompound(candidates).common(enclosure) if candidates else Part.Shape()
 
 
+def intersection_volume(a, b):
+    if not a.BoundBox.intersect(b.BoundBox):
+        return 0.0
+    intersection = a.common(b)
+    return 0.0 if intersection.isNull() else round(intersection.Volume, 6)
+
+
+def unique_connector(exported, dimensions, name):
+    candidates = [s for s in exported.Solids if all(
+        abs(actual - expected) < 0.02 for actual, expected in zip(
+            (s.BoundBox.XLength, s.BoundBox.YLength, s.BoundBox.ZLength), dimensions))]
+    if len(candidates) != 1:
+        raise ValueError("Expected one " + name + " connector solid")
+    return candidates[0]
+
+
 def trajectory(config):
     outside = config["insertion"]["outside_z_mm"]
     angle = config["insertion"]["approach_angle_deg"]
@@ -240,6 +256,42 @@ def main():
         groups[name+"_components"] = pose(Part.makeCompound(components), spec)
         exports[name] = exported
         sources[name]["step_sha256"] = digest(output)
+    host_connector = pose(unique_connector(exports["host"], (23, 3.7, 9.2), "host J1"),
+                          config["boards"]["host"])
+    meter_connector = pose(unique_connector(exports["meter"], (21.5, 4, 6.8), "meter J5"),
+                           config["boards"]["meter"])
+    meter_pcb = groups["meter_pcb"]
+    display = groups["s3_tft"]
+    module_pcb = groups["s3_pcb"]
+    upper_checks = {
+        "carrier_pcb_to_meter_pcb_mm3": intersection_volume(groups["host_pcb"], meter_pcb),
+        "s3_pcb_to_meter_pcb_mm3": intersection_volume(module_pcb, meter_pcb),
+        "s3_tft_to_meter_pcb_mm3": intersection_volume(display, meter_pcb),
+        "s3_usb_to_meter_pcb_mm3": intersection_volume(groups["s3_usb"], meter_pcb),
+        "carrier_pcb_to_power_mm3": intersection_volume(
+            groups["host_pcb"], Part.makeCompound([groups["power_pcb"],
+                                                   groups["power_components"]])),
+    }
+    if any(value > 0.000001 for value in upper_checks.values()):
+        raise ValueError("Lower-display board/component collision: " + json.dumps(upper_checks))
+    if (display.BoundBox.ZMax > meter_pcb.BoundBox.ZMax + 0.01
+            or module_pcb.BoundBox.XMax >= meter_pcb.BoundBox.XMin):
+        raise ValueError("Display must be flush/below the meter and left of the riser")
+    upper_alignment = dict(
+        meter_pcb_top_z_mm=round(meter_pcb.BoundBox.ZMax, 6),
+        carrier_pcb_top_z_mm=round(groups["host_pcb"].BoundBox.ZMax, 6),
+        s3_pcb_top_z_mm=round(module_pcb.BoundBox.ZMax, 6),
+        tft_top_z_mm=round(display.BoundBox.ZMax, 6),
+        usb_top_z_mm=round(groups["s3_usb"].BoundBox.ZMax, 6),
+        meter_pcb_left_x_mm=round(meter_pcb.BoundBox.XMin, 6),
+        s3_pcb_right_x_mm=round(module_pcb.BoundBox.XMax, 6),
+        checked_non_mating_overlaps_mm3=upper_checks,
+        host_j1_meter_j5_intersection_mm3=intersection_volume(host_connector, meter_connector),
+        connector_row_center_difference_y_mm=round(
+            host_connector.BoundBox.Center.y-meter_connector.BoundBox.Center.y, 6),
+        connector_note=("Intersections include mated model contacts and potential housing clashes; "
+                        "their value does not verify engagement. J1 footprint/model identity and "
+                        "the physical connector seat require independent measurement."))
     headers = [s for s in exports["power"].Solids if
                14.5 < s.BoundBox.XLength < 14.8 and
                10.8 < s.BoundBox.YLength < 11.1 and
@@ -288,6 +340,7 @@ def main():
         revision="2.0", units="mm; intersections in mm^3", sources=sources,
         config_sha256=digest(config_path), enclosure_sha256=digest(args.enclosure_step),
         molex_receptacle_sha256=MOLEX_SHA, meter_visual_model_substitutions=substitutions,
+        upper_alignment=upper_alignment,
         intersection_threshold_mm3=THRESHOLD, first_contact_frame=first,
         collision_free_at_samples=first is None, frames=frames,
         statement="Nominal assembly and insertion animation, NOT a verified collision-free path.",
@@ -296,7 +349,7 @@ def main():
             "The motion continues after contact to illustrate the nominal seat; contacts are highlighted.",
             "Meter/carrier mating trajectories and seating datums require physical measurement.",
             "The carrier is attached from below before the combined pair enters the PCI socket; Nano-Fit plugs are absent until after nominal seating.",
-            "The current riser and carrier Z datums may overestimate the physical stack height; no unmeasured correction has been applied.",
+            "The lower-left carrier datum is a provisional user-observation-constrained model, not a measured physical connector seat.",
             config["module"]["assumption"], config["riser_allowance"]["assumption"],
             "Two 6.6 mm socket bodies are replaced visually with 2.5 mm proxies; PCB unchanged.",
             "Nano-Fit receptacle seating, J1 model identity and wire bending remain provisional.",
