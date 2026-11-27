@@ -141,6 +141,31 @@ CTs / isolated voltage source
 6. **Keep the gateway replaceable.** Support an MCU/SBC host through a stable
    protocol rather than coupling acquisition to one Wi-Fi module.
 
+## Metering and front-panel samples
+
+The legacy three-phase riser used two ATM90E36 devices. A dual-ADE9000 sample
+riser is the direct modern comparison: up to six voltage and eight current
+channels, independent chip selects and interrupts, and a shared clock/sync
+experiment. It must use the keyed v2 interface, characterize cross-device
+alignment rather than assuming coherent samples, and remain a limited
+research board until its extra channel count has named use cases.
+
+Keep the Wi-Fi and display board above the isolation boundary and independent
+of the metering riser. The current host candidates are:
+
+| Host | Fit and interface | Recommended role |
+| --- | --- | --- |
+| LOLIN D1 mini v4 + 0.66-inch OLED shield | 34.2 x 25.6 mm ESP8266 board; the 64 x 48 SSD1306 display uses I2C, leaving SPI available | Recover the existing `din_isolated_SPI` stack and validate firmware compatibility |
+| ESP32 D1 Mini / Mini32 + I2C OLED shield | Legacy shield envelope with stronger processing and multiple SPI controllers, but clone pin maps and sourcing vary | Low-cost migration experiment only after a carrier-level pinout audit |
+| Heltec WiFi Kit 32 V3 | 50.2 x 25.5 mm ESP32-S3 with integrated 0.96-inch 128 x 64 OLED and two SPI controllers | Leading integrated front-panel prototype on a new keyed carrier |
+| LILYGO T-Display S3 | ESP32-S3 with a larger integrated color display and dedicated display interface | Richer UI alternative when enclosure-window and GPIO budgets justify a custom carrier |
+
+The OLED should use I2C, or the display should use a dedicated controller
+interface, so one hardware SPI controller remains reserved for metrology.
+Display and Wi-Fi resets must not interrupt acquisition. ESP8266 is suitable
+for compatibility, status, and summary telemetry; sustained waveform
+streaming requires measured proof or an ESP32-S3/SBC-class host.
+
 ## Viability and risks
 
 | Dimension | Assessment | Main gate |
@@ -214,4 +239,8 @@ The platform work is tracked in this repository and linked to the
 - [#7](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/7) - local gateway and open data pipeline
 - [#8](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/8) - research pilot and NILM benchmark
 - [#9](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/9) - university research and publication program
+- [#10](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/10) - Vangotech metering-ASIC riser
+- [#11](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/11) - single-ADE9000 polyphase riser
+- [#12](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/12) - dual-ADE9000 sample riser
+- [#13](https://github.com/whatnick/DIN_Rail_EnergyMonitor/issues/13) - replaceable Wi-Fi/OLED front-panel host
 
